@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio Kaio Bezerra</title>
+
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(270deg, #000000, #0b234f, #000000, #0b234f);
+            background-size: 800% 800%;
+            animation: mudarFundo 8s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes mudarFundo {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        
+        main, section, img, h1, h2, p {
+            position: relative; 
+            z-index: 1; /* garante que aparece acima do fundo */
+        }
+
+        h1, h2, p {
+            margin: 5;
+        }
+
+        main, section, h1, h2, p {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            font-weight: normal;
+            color: beige;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column; /* empilha elementos verticalmente */
+            align-items: center;    /* centraliza horizontalmente */
+        }
+
+
+        img {
+            width: 200px;  /* controla largura */
+            height: auto;  /* mantém proporção */
+            margin-bottom: 0px; /* dá espaço antes do texto */
+            position: relative;
+        }
+
+        h1 { font-size: 65px; }
+        h2 { font-size: 25px; }
+        p  { font-size: 17px; }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Aplica animação aos elementos */
+        a, img, h1, h2, p {
+            position: relative;
+            z-index: 1;
+            animation: subir 3.25s ease forwards; /* duração e suavização */
+        }
+
+        /* Delays para cada elemento, criando efeito sequencial */
+        a { animation-delay: 1s;}
+        img { animation-delay: 0.3s; }
+        h1  { animation-delay: 0.6s; }
+        h2  { animation-delay: 0.9s; }
+        p   { animation-delay: 0.9s; }
+
+        h1 {
+            margin: 10;             /* remove margem padrão */
+            margin-bottom: 10px;   /* pequeno espaço até o h2 */
+        }
+
+        h2 {
+            margin: 4;
+            margin-bottom: 10px;   /* espaço até o parágrafo */
+        }
+
+        p {
+            margin: 5;
+            margin-bottom: 20px;   /* espaço até o botão */
+        }
+
+
+        .btn-seta {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background-color: #1e3c72;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* distancia do texto acima */
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-seta:hover {
+            background-color: #385476;
+            transform: scale(1.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <img src="snoopy-esnupi.gif" alt="imagem">
+            <h1>Olá!</h1>
+            <h2>Seja bem vindo ao meu portifólio!<br> Eu sou Kaio Bezerra e mostrarei um pouco mais sobre mim.</h2>
+            <p><b>Curiosidade:</b> Sabia que esse portifólio foi programado por mim <b>do zero?</b></p>
+            <a href= "C:\Meus projetos\routes\landing.html" class="btn-seta">→</a>
+        </section>
+    </main>
+</body>
+</html>
