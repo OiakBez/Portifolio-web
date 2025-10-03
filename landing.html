@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página principal</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            background-size: cover;
+            background-position: left;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            flex-direction: column;
+            min-height: 100%;
+            }
+
+       body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(270deg, #000000, #640202, #000000, #000000);
+            background-size: 800% 800%;
+            animation: mudarFundo 8s ease forwards; /* anima 1x e para no final */
+            z-index: -1;
+        }
+
+        
+        @keyframes mudarFundo {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; } /* aqui fica travado */
+        }
+
+         main, section, img, h1, h2, p {
+            position: relative; 
+            z-index: 1; /* garante que aparece acima do fundo */
+        }
+
+        h1, h2, p {
+            margin: 5;
+        }
+
+        main, section, h1, h2, p {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: left;
+            font-weight: normal;
+            color: beige;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column; /* empilha elementos verticalmente */
+            align-items: left;    /* centraliza horizontalmente */
+        }
+
+
+        img {
+            width: 100px;  /* controla largura */
+            height: auto;  /* mantém proporção */
+            margin-bottom: 0px; /* dá espaço antes do texto */
+            position: relative;
+        }
+
+        h1 { font-size: 50px; }
+        h2 { font-size: 25px; }
+        p  { font-size: 17px; }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Aplica animação aos elementos */
+        section, a, img, h1, h2, h5, p {
+            position: relative;
+            z-index: 1;
+            animation: subir 3.25s ease forwards; /* duração e suavização */
+        }
+
+        /* Delays para cada elemento, criando efeito sequencial */
+        section { animation-delay: 0.6s; }
+        a { animation-delay: 1s;}
+        img { animation-delay: 0.3s; }
+        h1  { animation-delay: 0.6s; }
+        h2  { animation-delay: 0.9s; }
+        p   { animation-delay: 0.9s; }
+
+        h1 {
+            margin: 10;             /* remove margem padrão */
+            margin-bottom: 10px;   /* pequeno espaço até o h2 */
+        }
+
+        h2 {
+            margin: 4;
+            margin-bottom: 10px;   /* espaço até o parágrafo */
+        }
+
+        p {
+            margin: 5;
+            margin-bottom: 20px;
+            font-size: 17px;
+
+            max-width: 570px;     /* largura máxima do bloco */
+            text-align: justify;  /* deixa o texto uniforme nas margens */
+            line-height: 1.6;     /* melhora o espaçamento entre linhas */
+        }
+
+        .bloco-texto {
+            border: 2px solid white;   /* borda branca */
+            padding: 15px;             /* espaço interno entre texto e borda */
+            margin: 20px;              /* espaço externo */
+            max-width: 600px;          /* largura máxima do bloco */
+            border-radius: 8px;        /* cantos levemente arredondados (opcional) */
+            background-color: rgba(0, 0, 0, 0.3); /* fundo translúcido opcional */
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;   /* coloca lado a lado */
+            justify-content: space-between; /* separa um na esquerda e outro na direita */
+            align-items: flex-start; /* alinha pelo topo */
+            padding: 20px;
+        }
+
+        .img-botao img {
+            width: 120px;      /* tamanho do gif */
+            height: auto;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;   /* mãozinha no hover */
+        }
+
+        /* efeito ao passar o mouse */
+        .img-botao img:hover {
+            transform: scale(1.1); /* aumenta levemente */
+            box-shadow: 0 0 15px rgba(255,255,255,0.6); /* brilho ao redor */
+        }
+
+        /* efeito ao clicar */
+        .img-botao img:active {
+            transform: scale(0.95); /* dá sensação de ser apertado */
+        }
+
+        /* imagem do bloco da direita */
+        .bloco-texto img.foto-grande {
+            width: 250px;        /* define um tamanho fixo */
+            height: 250px;       /* mesma altura da largura → vira círculo */
+            object-fit: cover;   /* corta a imagem mantendo proporção dentro do círculo */
+            display: block;      
+            margin: 20px auto 0; /* centraliza */
+            border-radius: 50%;  /* deixa redonda */
+            border: 3px solid white; /* moldura branca */
+        }
+
+        figure {
+            text-align: center; /* centraliza tanto imagem quanto legenda */
+            margin: 0;          /* tira margens extras do figure */
+        }
+
+        figcaption {
+            margin-top: 10px;   /* espaço entre a imagem e a legenda */
+            font-style: italic; /* deixa a legenda mais elegante */
+            font-size: 15px;
+            text-align: center; /* centraliza a legenda */
+        }
+
+        .bloco-esquerda {
+            position: relative; /* permite posicionar h5 relativamente ao bloco */
+        }
+
+        .h5-container {
+            position: absolute;
+            bottom: -30px;       /* coloca levemente para fora do bloco */
+            left: 15px;          /* distancia da borda esquerda */
+            color: rgba(255, 255, 255, 0.893); /* deixa semitransparente para ficar “meio escondido” */
+            font-size: 14px;
+        }
+
+        .h5-container h5 {
+            margin: 2px 0;
+            font-weight: bold;     /* espaço pequeno entre linhas */
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <div class="bloco-esquerda">
+            <section class="bloco-texto">
+                <h1>Quem eu sou?</h1>
+                <p>
+                Kaio Bezerra, nascido em 29 de novembro em 2007, aluno do Sesi Ibura desde 2023 cursando Ensino Médio e seguindo o curso técnico de Desenvolvimento de Sistemas.
+                <br>Admirador daquilo que é bom, belo e amado. Fé em Cristo e com prazer em música, biologia, química, arte e literatura.
+                </p>
+                <!-- imagem que é botão -->
+                <a href= "C:\Meus projetos\routes\certificates.html" class="img-botao">
+                    <img src="brick-sarqtiya.gif" alt="engrenagem">
+                </a>
+            </section>
+
+            <div class="h5-container">
+                <h5>Talvez você fique mais interessado em acompanhar meus certificados.</h5>
+                <h5>Já tentou observar aquela <b>peça de lego?</b> Parece suspeito...</h5>
+            </div>
+        </div>
+
+        <section class="bloco-texto">
+            <h1>Meu Objetivo</h1>
+            <p>
+            Criar soluções digitais criativas e impactantes, unindo tecnologia, ciência e arte para transformar ideias em realidade.
+            <br>Com habilidades de Desenvolvedor Web, ofereço serviços de manutenção/desenvolvimento de sites, criação de interfaces e landing pages.
+            </p>
+            <figure>
+                <img src="eu.png" alt="foto minha o_o" class="foto-grande">
+                <figcaption>Me conheça um pouco melhor! Haverá mais fotos. <br>Primeiro veja minha formação.</figcaption>
+            </figure>
+        </section>
+    </main>
+</body>
+
+</html>
